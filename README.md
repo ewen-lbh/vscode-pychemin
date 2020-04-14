@@ -1,4 +1,7 @@
-# vscode-pychemin
+<center><p align="center"> 
+  <img src="./logotype.png" width="60%">
+  <h1> vscode-pychemin </h1>
+</p></center>
 
 Provides syntax highlighting (and much more to come) for [PyChemin](https://github.com/ewen-lbh/pychemin), a minimal language to describe interactive, terminal-based text adventure games.
 
