@@ -1,0 +1,49 @@
+{
+    "name": "pychemin",
+    "displayName": "PyChemin",
+    "description": "Syntax highlighting for the minimal language to describe interactive, terminal-based text adventure games, PyChemin.",
+    "repository": {
+        "url": "https://github.com/ewen-lbh/vscode-pychemin"
+    },
+    "version": "0.1.0",
+    "engines": {
+        "vscode": "^1.44.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "pychemin",
+                "aliases": [
+                    "PyChemin",
+                    "pychemin"
+                ],
+                "extensions": [
+                    ".pychemin"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "pychemin",
+                "scopeName": "source.pychemin",
+                "path": "./syntaxes/pychemin.tmLanguage.json",
+                "embeddedLanguages": {
+                    "meta.embedded.block.python": "javascript"
+                }
+            }
+        ],
+        "snippets": [
+            {
+                "language": "pychemin",
+                "path": "./snippets.json"
+            }
+        ]
+    },
+    "devDependencies": {
+        "js-yaml": "^3.13.1"
+    }
+}

@@ -1,0 +1,61 @@
+{
+  "If block": {
+    "prefix": "if",
+    "body": [
+      "=? $1",
+      "\t$0"
+    ]
+  },
+  "Else block": {
+    "prefix": "else",
+    "body": [
+      "=!",
+      "\t$0"
+    ]
+  },
+  "Ask block": {
+    "prefix": "ask",
+    "body": [
+      "${1|>>,>*,>?,>?.|} $2",
+      "\t$0"
+    ]
+  },
+  "Act": {
+    "prefix": "act",
+    "body": [
+      "==== $1 ====",
+      "",
+      "$0"
+    ]
+  },
+  "Chapter": {
+    "prefix": "chapter",
+    "body": [
+      "---- $1 ----",
+      "",
+      "$0"
+    ]
+  },
+  "Character line": {
+    "prefix": "character",
+    "body": "[$1] $0"
+  },
+  "Stat change": {
+    "prefix": "stat",
+    "body": "@$1 ${2|+,-,=,*,/,reset|}$0"
+  },
+  "Load file": {
+    "prefix": "load",
+    "body": [
+      "-> $1",
+      "$0"
+    ]
+  },
+  "Play sound": {
+    "prefix": "sound",
+    "body": [
+      "/$1",
+      "$0"
+    ]
+  }
+}

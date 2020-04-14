@@ -1,0 +1,93 @@
+---
+name: PyChemin
+scopeName: source.pychemin
+
+repository:
+  interpolable-string:
+    patterns:
+      match: .*(#[^\w_]+).*
+      name: string.unquoted
+      captures:
+        1: { name: string.interpolated }
+
+patterns:
+# comment
+- match: // .+
+  name: comment.line.double-slash
+
+# input, input_required
+- match: (>[>*])\s*(?:([^,]+)(,?))?
+  captures:
+    1: { name: keyword.control }
+    2: { name: string.unquoted }
+
+# input_fallback, input_fallback_and_continue
+- match: (>\?\.?)
+  captures:
+    1: { name: keyword.control }
+
+# load_file
+- match: \s*(->) (.+)
+  captures:
+    1: { name: keyword.operator }
+    2: { name: entity.other.attribute-name }
+
+# input_hint
+- match: (\?) (.+)
+  name: markup.quote.markdown
+
+# char_line
+- match: (\[)([^\]]+)(\]) (.+)
+  captures:
+    # 1: { name:  }
+    2: { name: entity.name.function }
+    # 3: { name:  }
+    4: { name: string.unquoted }
+
+# 
+- match: \{(.+)\}
+  captures:
+    1: { name: meta.embedded.block.python }
+
+- match: (===+) ([^=]+) (===+)
+  name: heading.1.markdown
+  captures:
+    1: { name: punctuation.definition.heading.markdown }
+    2: { name: entity.name }
+    3: { name: punctuation.definition.heading.markdown }
+  
+- match: (---+) ([^-]+) (---+)
+  name: heading.2.markdown
+  captures:
+    1: { name: punctuation.definition.heading.markdown }
+    2: { name: entity.name }
+    3: { name: punctuation.definition.heading.markdown }
+
+- match: (@)([\w_]+(:))?([\w_]+) ([+*/=-])(\d+%?)
+  captures:
+    1: { name: keyword.operator }
+    2: { name: entity.other.attribute-name }
+    3: { name: keyword.operator }
+    4: { name: entity.name.function }
+    5: { name: keyword.operator }
+    6: { name: constant.numeric }
+- match: (@)([\w_]+(:))?([\w_]+) (reset)
+  captures:
+    1: { name: keyword.operator }
+    2: { name: entity.other.attribute-name }
+    3: { name: keyword.operator }
+    4: { name: entity.name.function }
+    5: { name: keyword.operator }
+
+- match: (=\?) (.+)
+  captures:
+    1: { name: keyword.control }
+    2: { name: meta.embedded.block.python }
+
+- match: =!
+  name: keyword.control
+
+- match: (/)(.+)
+  captures:
+    1: { name: keyword.operator }
+    2: { name: entity.other.attribute-name }
