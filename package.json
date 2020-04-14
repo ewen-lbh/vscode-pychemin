@@ -1,7 +1,7 @@
 {
     "name": "pychemin",
     "publisher": "ewen-lbh",
-    "icon": "./icon.png",
+    "icon": "icon.png",
     "displayName": "PyChemin",
     "description": "Syntax highlighting for the minimal language to describe interactive, terminal-based text adventure games, PyChemin.",
     "repository": {
