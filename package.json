@@ -34,7 +34,7 @@
                 "scopeName": "source.pychemin",
                 "path": "./syntaxes/pychemin.tmLanguage.json",
                 "embeddedLanguages": {
-                    "meta.embedded.block.python": "javascript"
+                    "source.python": "python"
                 }
             }
         ],
