@@ -32,6 +32,4 @@ $ pychemin --version
 ## Known Issues
 
 - Interpolation `my thing #name` is not highlighted correctly.
-- Only the last choice in choice lists gets highlighted correctly.
-- Python code is not highlighted (neither in `=? python condition` nor in `{ python code }`)
 - Percent operator (`@speed 50%`) is not highlighted (but ewen-lbh/pychemin doesn't even use it yet)

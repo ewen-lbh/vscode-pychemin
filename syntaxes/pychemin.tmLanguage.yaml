@@ -12,14 +12,26 @@ repository:
 
 patterns:
 # comment
-- match: // .+
+- match: // .*
   name: comment.line.double-slash
 
+# python code
+- begin: ^\{
+  end: \}$
+  beginCaptures: { 0: { name: punctuation.bracket }}
+  endCaptures: { 0: { name: punctuation.bracket }}
+  patterns:
+    - include: source.python
+  
 # input, input_required
-- match: (>[>*])\s*(?:([^,]+)(,?))?
-  captures:
+- begin: ^(>[>*])
+  end: $
+  beginCaptures: 
     1: { name: keyword.control }
-    2: { name: string.unquoted }
+  contentName: string.unquoted
+  patterns:
+    - match: "[;,]"
+      name: punctuation.separator
 
 # input_fallback, input_fallback_and_continue
 - match: (>\?\.?)
@@ -27,27 +39,27 @@ patterns:
     1: { name: keyword.control }
 
 # load_file
-- match: \s*(->) (.+)
+- match: ^\s*(->) (.+)
   captures:
     1: { name: keyword.operator }
     2: { name: entity.other.attribute-name }
 
 # input_hint
-- match: (\?) (.+)
+- match: ^\s*(\?) (.+)
   name: markup.quote.markdown
 
 # char_line
 - match: (\[)([^\]]+)(\]) (.+)
   captures:
-    # 1: { name:  }
-    2: { name: entity.name.function }
-    # 3: { name:  }
+    1: { name: punctuation.bracket }
+    2: { name: entity.name.type }
+    3: { name: punctuation.bracket }
     4: { name: string.unquoted }
 
 # 
-- match: \{(.+)\}
-  captures:
-    1: { name: meta.embedded.block.python }
+# - begin: ^\{
+#   include: source.python
+#   end: \}$
 
 - match: (===+) ([^=]+) (===+)
   name: heading.1.markdown
@@ -66,7 +78,7 @@ patterns:
 - match: (@)([\w_]+(:))?([\w_]+) ([+*/=-])(\d+%?)
   captures:
     1: { name: keyword.operator }
-    2: { name: entity.other.attribute-name }
+    2: { name: entity.name.type }
     3: { name: keyword.operator }
     4: { name: entity.name.function }
     5: { name: keyword.operator }
@@ -74,15 +86,17 @@ patterns:
 - match: (@)([\w_]+(:))?([\w_]+) (reset)
   captures:
     1: { name: keyword.operator }
-    2: { name: entity.other.attribute-name }
+    2: { name: entity.name.type }
     3: { name: keyword.operator }
     4: { name: entity.name.function }
     5: { name: keyword.operator }
 
-- match: (=\?) (.+)
-  captures:
+- begin: ^\s*(=\?)
+  end: $
+  beginCaptures:
     1: { name: keyword.control }
-    2: { name: meta.embedded.block.python }
+  patterns:
+    - include: source.python
 
 - match: =!
   name: keyword.control
